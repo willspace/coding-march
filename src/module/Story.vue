@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="g-container" style="">
+    <div class="g-container" :style="{backgroundImage:`url(${backMap})`}">
       <a v-for="(le, index) in list"
          :key="index"
          class="u-lesson"
@@ -24,7 +24,8 @@ export default {
     return {
       sid:'',
       list:[],
-      currLesson:0
+      currLesson:0,
+      backMap:''
     }
   },
   created(){
@@ -47,6 +48,7 @@ export default {
         .then(res=>{
           this.list = res.list || [];
           this.currLesson = res.curr_lesson;
+          this.backMap = res.backMap;
         })
         .catch(()=>{
           alert('获取课程列表失败，请稍后再试。');
@@ -76,7 +78,6 @@ export default {
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: contain;
-    background-image: url(../assets/imgs/background_map.png)
   }
   .u-lesson{
     position: absolute;

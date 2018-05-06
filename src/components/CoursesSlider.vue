@@ -5,7 +5,7 @@
         <div v-for="(s, index) in list" :key="index" :class="['g-story',{'pre':index===1,'next':index===2}]" :style="{backgroundImage: `url(${s.storyMapPath})`}">
         <div class="u-banner">
           <div class="g-container">
-            <img class="u-story-info" src="../assets/imgs/story-info.png">
+            <img class="u-story-info" :src="s.storyIntroPath">
             <div class="u-story-video">
               <img class="img-story-video" :src="s.storyPicPath">
               <template  v-if="index===0">
