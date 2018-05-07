@@ -37,7 +37,6 @@ export default {
     }
   },
   mounted(){
-    this.loaderCancel();
   },
   methods:{
     loaderCancel(){
@@ -49,9 +48,25 @@ export default {
           this.list = res.list || [];
           this.currLesson = res.curr_lesson;
           this.backMap = res.backMap;
+          this.loaderCancel();
         })
         .catch(()=>{
-          alert('获取课程列表失败，请稍后再试。');
+//          alert('获取课程列表失败，请稍后再试。');
+          var res = {
+              "curr_lesson":3,
+              "map":"http://xxx.com/xxx.jpg",
+              "list":[
+                {"id":1,"name":"s1","x":69,"y":780},
+                {"id":2,"name":"s2","x":233,"y":780},
+                {"id":3,"name":"s3","x":467,"y":636},
+                {"id":4,"name":"s4","x":749,"y":740}
+              ],
+              "backMap":'https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_map.png?raw=true'
+            };
+          this.list = res.list || [];
+          this.currLesson = res.curr_lesson;
+          this.backMap = res.backMap;
+          setTimeout(()=>this.loaderCancel(),500)
         })
     }
   }
@@ -88,7 +103,7 @@ export default {
     color: #000;
     .u-box{
       position: relative;
-      min-width: 4rem;
+      min-width: 3rem;
       height: 1.6rem;
       box-sizing: border-box;
       border-radius: 18px;

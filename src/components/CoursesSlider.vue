@@ -5,12 +5,12 @@
         <div v-for="(s, index) in list" :key="index" :class="['g-story',{'pre':index===1,'next':index===2}]" :style="{backgroundImage: `url(${s.storyMapPath})`}">
         <div class="u-banner">
           <div class="g-container">
-            <img class="u-story-info" :src="s.storyIntroPath">
+            <!--<img class="u-story-info" :src="s.storyIntroPath">-->
+            <img class="u-story-info" src="../assets/imgs/story-info.png">
             <div class="u-story-video">
               <img class="img-story-video" :src="s.storyPicPath">
               <template  v-if="index===0">
-              <video ref="video" controls v-show="videoPlay">
-                <source :src="s.storyVideoPath" type="video/mp4">
+              <video ref="video" :src="s.storyVideoPath" controls v-show="videoPlay">
                 您的浏览器不支持 HTML5 video 标签。
               </video>
               </template>
@@ -74,6 +74,16 @@ export default {
             this.storyList = res;
             this.$emit('loaderCancel');
           }
+        })
+        .catch(()=>{
+            this.storyList = [
+              {"id":1,"name":"test1","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0129f15721dd9a32f875a39901c5ca.jpg@1280w_1l_2o_100sh.webp","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4"},
+              {"id":2,"name":"test2","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/014ce25721dda732f875a39930221b.jpg@1280w_1l_2o_100sh.webp","storyVideoPath":"http://www.w3school.com.cn/i/movie.ogg"},
+              {"id":3,"name":"test3","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/01140b5721ddb932f875a3999a59d5.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?3"},
+              {"id":4,"name":"test4","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0100c35721ddbc32f875a399dd71e1.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?4"},
+              {"id":5,"name":"test5","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0107c85721ddce32f875a399006bcc.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?5"}
+            ];
+            this.$emit('loaderCancel');
         })
     },
     goIn(){
@@ -192,6 +202,7 @@ export default {
           top: 0;
           width: 100%;
           height: 100%;
+          background: #000;
         }
         .btn-start{
           position: absolute;

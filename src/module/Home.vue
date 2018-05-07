@@ -39,7 +39,18 @@ export default {
             that.username = res.username;
           }
         })
-        .catch(()=>alert('未知错误'));
+        .catch(()=>{
+//          alert('未知错误')
+          var res = {
+            "status":200,
+            "username":"userAdmin",
+            "uid":123
+          }
+          if(res.status === 200){
+            that.$root.uid = that.uid = res.uid;
+            that.username = res.username;
+          }
+        });
     },
     loginIn(data){
       let that = this;
@@ -63,7 +74,11 @@ export default {
             alert(msg);
           }
         })
-        .catch(()=>alert('未知错误'))
+        .catch(()=>{
+//          alert('未知错误')
+          that.uid = 123;
+          that.username = 'test';
+        })
     },
     storyGo(sid){
       let that = this;
@@ -75,7 +90,10 @@ export default {
             alert('无权限')
           }
         })
-        .catch(()=>alert('未知错误'));
+        .catch(()=>{
+//          alert('未知错误')
+          this.$emit('changePage',{path:'story',query:{sid:123}});
+        });
     },
     loaderCancel(){
       this.$emit('loaderCancel');
