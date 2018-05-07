@@ -49,6 +49,9 @@ export default {
 }
 </script>
 <style lang="scss">
+  *{
+    user-select: none;
+  }
   body{
     background-color: #f6f6f6;
     height: 100%;

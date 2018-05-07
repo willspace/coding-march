@@ -9,7 +9,7 @@
             <div class="u-story-video">
               <img class="img-story-video" :src="s.storyPicPath">
               <template  v-if="index===0">
-              <video ref="video" controls v-show="videoPlay" @pause="videoPause">
+              <video ref="video" controls v-show="videoPlay">
                 <source :src="s.storyVideoPath" type="video/mp4">
                 您的浏览器不支持 HTML5 video 标签。
               </video>
