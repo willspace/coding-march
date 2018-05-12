@@ -6,14 +6,14 @@
         <div class="u-connect">
           <img src="../assets/imgs/icon_phone.png" class="i-phone">
           <span class="f-has-qr">
-            <img src="../assets/imgs/icon_Wechat.png" class="i-wechat">
+            <img src="../assets/imgs/QQ.png" class="i-qq">
             <div class="u-qrcode">
               <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
               <i class="i-row"></i>
             </div>
           </span>
           <span class="f-has-qr">
-            <img src="../assets/imgs/icon_QQ.png" class="i-qq">
+            <img src="../assets/imgs/Wechat.png" class="i-wechat">
             <div class="u-qrcode">
               <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
               <i class="i-row"></i>
@@ -73,7 +73,7 @@ export default {
   }
   .logo{
     position: absolute;
-    top: 0.35rem;
+    top: 0.25rem;
     width: 4rem;
     height: 1.2rem;
     background: url(../assets/imgs/logo.png) no-repeat;
@@ -81,18 +81,17 @@ export default {
   }
   .u-connect{
     position: absolute;
-    top: 0.7rem;
+    top: 0.54rem;
     right: 0;
-    width: 7rem;
+    width: 6rem;
     height: 1rem;
 
     &>img, .f-has-qr>img{
       float: right;
-      margin-left: 0.6rem;
+      margin-left: 0.3rem;
       height: 0.75rem;
 
       &.i-wechat, &.i-qq{
-        margin-top: 0.15rem;
         height: 0.54rem;
         cursor: pointer;
       }
@@ -106,7 +105,7 @@ export default {
         position: absolute;
         display: none;
         top: 1rem;
-        left: -1.15rem;
+        left: -1.34rem;
         height: 4rem;
         width: 4rem;
         border-radius: 4px;
@@ -130,7 +129,7 @@ export default {
         }
       }
       @keyframes qrcodeShowKF{0%{opacity:0;transform:scale(0.5,0.5);}
-        50%{opacity:1;transform:scale(1.1,1.1);}
+        50%{opacity:1;transform:scale(1.06,1.06);}
         100%{opacity:1;}
       }
       &:hover{

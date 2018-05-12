@@ -1,24 +1,31 @@
 <template>
-  <div class="wrapper">
-    <div class="g-container" :style="{backgroundImage:`url(${backMap})`}">
+  <div class="wrapper" :style="{backgroundColor:backColor}">
+    <div class="g-container"
+         :style="{backgroundImage:`url(${backMap})`,
+                  width: 1920*mapScale+'px',
+                  height: 1080*mapScale+'px'}">
       <a v-for="(le, index) in list"
          :key="index"
          class="u-lesson"
          :href="`/xxx?lesson_id=${le.id}`"
-         :style="{left:le.x+'px',top:le.y+'px'}">
+         :style="{left:le.x*mapScale+'px',
+                  top:le.y*mapScale+'px',
+                  transform:`translate(-50%, -100%) translateY(-8px) scale(${mapScale})`}">
         <div class="u-box">{{le.name}}
           <div class="u-row"></div>
           <div :class="['u-flag',{'pass':currLesson>index+1}]">{{index+1}}</div>
         </div>
       </a>
-      <div class="u-back">
-        <div class="u-btn" @click="back"></div>
-      </div>
+    </div>
+    <div class="u-back">
+      <div class="u-btn" @click="back"></div>
     </div>
   </div>
 </template>
 
 <script>
+  var winH = window.innerHeight || 0;
+  var winW = window.innerWidth || 0;
   import ajax from "../assets/js/ajax"
 export default {
   components:{
@@ -28,7 +35,8 @@ export default {
       sid:'',
       list:[],
       currLesson:0,
-      backMap:''
+      backMap:'',
+      mapScale:1
     }
   },
   created(){
@@ -38,8 +46,12 @@ export default {
     }else{
       this.$router.replace('/')
     }
+    this.resetScale()
   },
   mounted(){
+    window.onresize = () => {
+      this.resetScale()
+    }
   },
   methods:{
     loaderCancel(){
@@ -59,10 +71,10 @@ export default {
               "curr_lesson":3,
               "map":"http://xxx.com/xxx.jpg",
               "list":[
-                {"id":1,"name":"s1","x":69,"y":780},
-                {"id":2,"name":"s2","x":233,"y":780},
-                {"id":3,"name":"s3","x":467,"y":636},
-                {"id":4,"name":"s4","x":749,"y":740}
+                {"id":1,"name":"s1","x":276,"y":933},
+                {"id":2,"name":"s2","x":554,"y":761},
+                {"id":3,"name":"s3","x":888,"y":883},
+                {"id":4,"name":"s4","x":1302,"y":883}
               ],
               "backMap":'https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_map.png?raw=true'
             };
@@ -74,6 +86,17 @@ export default {
     },
     back(){
       this.$emit('pageGo',-1);
+    },
+    resetScale(){
+      winH = window.innerHeight || 0;
+      winW = window.innerWidth || 0;
+      if(winH===0) return;
+      var winS = winW/winH;
+      if(winS >= 1920/1080){
+        this.mapScale = winH/1080;
+      }else{
+        this.mapScale = winW/1920;
+      }
     }
   }
 }
@@ -82,12 +105,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 100%;
   height: 100%;
-  min-width: 38.4rem;
-  min-height: 21.6rem;
   background-color: #333;
 }
   .g-container{
@@ -99,12 +119,14 @@ export default {
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: contain;
+    box-shadow: 0 0 30px 15px #333 inset;
   }
   .u-lesson{
     position: absolute;
     left: -9999px;
     top: -9999px;
     transform: translate(-50%,-100%) translateY(-8px);
+    transform-origin: 50% 100%;
     text-decoration: none;
     color: #000;
     .u-box{
@@ -159,7 +181,7 @@ export default {
     }
   }
   .u-back{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     height: 3.34rem;

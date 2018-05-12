@@ -77,11 +77,11 @@ export default {
         })
         .catch(()=>{
             this.storyList = [
-              {"id":1,"name":"test1","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0129f15721dd9a32f875a39901c5ca.jpg@1280w_1l_2o_100sh.webp","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4"},
-              {"id":2,"name":"test2","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/014ce25721dda732f875a39930221b.jpg@1280w_1l_2o_100sh.webp","storyVideoPath":"http://www.w3school.com.cn/i/movie.ogg"},
-              {"id":3,"name":"test3","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/01140b5721ddb932f875a3999a59d5.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?3"},
-              {"id":4,"name":"test4","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0100c35721ddbc32f875a399dd71e1.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?4"},
-              {"id":5,"name":"test5","price":0.000,"storyMapPath":"https://goss2.vcg.com/creative/vcg/800/new/VCG41N877034190.jpg","storyPicPath":"http://img.zcool.cn/community/0107c85721ddce32f875a399006bcc.jpg@1280w_1l_2o_100sh.jpg","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?5"}
+              {"id":1,"name":"test1","price":0.000,"storyMapPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_home.png?raw=true","storyPicPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/story_pic.png?raw=truep","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4"},
+              {"id":2,"name":"test2","price":0.000,"storyMapPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_home.png?raw=true","storyPicPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/story_pic.png?raw=truep","storyVideoPath":"http://www.w3school.com.cn/i/movie.ogg"},
+              {"id":3,"name":"test3","price":0.000,"storyMapPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_home.png?raw=true","storyPicPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/story_pic.png?raw=true","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?3"},
+              {"id":4,"name":"test4","price":0.000,"storyMapPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_home.png?raw=true","storyPicPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/story_pic.png?raw=true","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?4"},
+              {"id":5,"name":"test5","price":0.000,"storyMapPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/background_home.png?raw=true","storyPicPath":"https://github.com/zwwill/coding-march/blob/master/src/assets/imgs/story_pic.png?raw=true","storyVideoPath":"http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4?5"}
             ];
             this.$emit('loaderCancel');
         })
@@ -212,7 +212,7 @@ export default {
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
-          background: url(../assets/imgs/button_vedio_default.png) no-repeat;
+          background: url(../assets/imgs/button_video_default.png) no-repeat;
           background-size: contain;
           cursor: pointer;
 
