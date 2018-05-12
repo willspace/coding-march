@@ -9,8 +9,7 @@
             <div class="u-story-video">
               <img class="img-story-video" :src="s.storyPicPath">
               <template  v-if="index===0">
-              <video ref="video" controls v-show="videoPlay">
-                <source :src="s.storyVideoPath" type="video/mp4">
+              <video ref="video" :src="s.storyVideoPath" controls v-show="videoPlay">
                 您的浏览器不支持 HTML5 video 标签。
               </video>
               </template>
@@ -192,6 +191,7 @@ export default {
           top: 0;
           width: 100%;
           height: 100%;
+          background: #000;
         }
         .btn-start{
           position: absolute;
@@ -201,7 +201,7 @@ export default {
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
-          background: url(../assets/imgs/button_vedio_default.png) no-repeat;
+          background: url(../assets/imgs/button_video_default.png) no-repeat;
           background-size: contain;
           cursor: pointer;
 

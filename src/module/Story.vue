@@ -1,24 +1,32 @@
 <template>
-  <div class="wrapper">
-    <div class="g-container" :style="{backgroundImage:`url(${backMap})`}">
+  <div class="wrapper" :style="{backgroundColor:backColor}">
+    <div class="g-container"
+         :style="{backgroundImage:`url(${backMap})`,
+                  width: 1920*mapScale+'px',
+                  height: 1080*mapScale+'px',
+                  boxShadow: `0 0 30px 15px ${backColor} inset`}">
       <a v-for="(le, index) in list"
          :key="index"
          class="u-lesson"
          :href="`/xxx?lesson_id=${le.id}`"
-         :style="{left:le.x+'px',top:le.y+'px'}">
+         :style="{left:le.x*mapScale+'px',
+                  top:le.y*mapScale+'px',
+                  transform:`translate(-50%, -100%) translateY(-8px) scale(${mapScale})`}">
         <div class="u-box">{{le.name}}
           <div class="u-row"></div>
           <div :class="['u-flag',{'pass':currLesson>index+1}]">{{index+1}}</div>
         </div>
       </a>
-      <div class="u-back">
-        <div class="u-btn" @click="back"></div>
-      </div>
+    </div>
+    <div class="u-back">
+      <div class="u-btn" @click="back"></div>
     </div>
   </div>
 </template>
 
 <script>
+  var winH = window.innerHeight || 0;
+  var winW = window.innerWidth || 0;
   import ajax from "../assets/js/ajax"
 export default {
   components:{
@@ -28,7 +36,9 @@ export default {
       sid:'',
       list:[],
       currLesson:0,
-      backMap:''
+      backMap:'',
+      backColor:'#333',
+      mapScale:1
     }
   },
   created(){
@@ -38,9 +48,12 @@ export default {
     }else{
       this.$router.replace('/')
     }
+    this.resetScale()
   },
   mounted(){
-    this.loaderCancel();
+    window.onresize = () => {
+      this.resetScale()
+    }
   },
   methods:{
     loaderCancel(){
@@ -52,6 +65,8 @@ export default {
           this.list = res.list || [];
           this.currLesson = res.curr_lesson;
           this.backMap = res.backMap;
+          this.backColor = res.backColor;
+          this.loaderCancel();
         })
         .catch(()=>{
           alert('获取课程列表失败，请稍后再试。');
@@ -59,6 +74,17 @@ export default {
     },
     back(){
       this.$emit('pageGo',-1);
+    },
+    resetScale(){
+      winH = window.innerHeight || 0;
+      winW = window.innerWidth || 0;
+      if(winH===0) return;
+      var winS = winW/winH;
+      if(winS >= 1920/1080){
+        this.mapScale = winH/1080;
+      }else{
+        this.mapScale = winW/1920;
+      }
     }
   }
 }
@@ -67,13 +93,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   width: 100%;
   height: 100%;
-  min-width: 38.4rem;
-  min-height: 21.6rem;
-  background-color: #333;
 }
   .g-container{
     position: relative;
@@ -84,17 +106,19 @@ export default {
     margin: 0 auto;
     background-repeat: no-repeat;
     background-size: contain;
+    box-shadow: 0 0 30px 15px #333 inset;
   }
   .u-lesson{
     position: absolute;
     left: -9999px;
     top: -9999px;
     transform: translate(-50%,-100%) translateY(-8px);
+    transform-origin: 50% 100%;
     text-decoration: none;
     color: #000;
     .u-box{
       position: relative;
-      min-width: 4rem;
+      min-width: 3rem;
       height: 1.6rem;
       box-sizing: border-box;
       border-radius: 18px;
@@ -144,7 +168,7 @@ export default {
     }
   }
   .u-back{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     height: 3.34rem;
