@@ -3,7 +3,8 @@
     <div class="g-container"
          :style="{backgroundImage:`url(${backMap})`,
                   width: 1920*mapScale+'px',
-                  height: 1080*mapScale+'px'}">
+                  height: 1080*mapScale+'px',
+                  boxShadow: `0 0 30px 15px ${backColor} inset`}">
       <a v-for="(le, index) in list"
          :key="index"
          class="u-lesson"
@@ -36,6 +37,7 @@ export default {
       list:[],
       currLesson:0,
       backMap:'',
+      backColor:'#333',
       mapScale:1
     }
   },
@@ -63,6 +65,7 @@ export default {
           this.list = res.list || [];
           this.currLesson = res.curr_lesson;
           this.backMap = res.backMap;
+          this.backColor = res.backColor;
           this.loaderCancel();
         })
         .catch(()=>{
@@ -108,7 +111,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #333;
 }
   .g-container{
     position: relative;
