@@ -1,30 +1,36 @@
 <template>
-  <div class="wrapper">
-    <div class="container">
-      <span class="logo"></span>
-      <div class="u-connect">
-        <img src="../assets/imgs/icon_phone.png" class="i-phone">
-        <span class="f-has-qr">
-          <img src="../assets/imgs/icon_Wechat.png" class="i-wechat">
-          <div class="u-qrcode">
-            <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
-            <i class="i-row"></i>
-          </div>
-        </span>
-        <span class="f-has-qr">
-          <img src="../assets/imgs/icon_QQ.png" class="i-qq">
-          <div class="u-qrcode">
-            <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
-            <i class="i-row"></i>
-          </div>
-        </span>
+  <div>
+    <div class="wrapper">
+      <div class="container">
+        <span class="logo"></span>
+        <div class="u-connect">
+          <img src="../assets/imgs/icon_phone.png" class="i-phone">
+          <span class="f-has-qr">
+            <img src="../assets/imgs/icon_Wechat.png" class="i-wechat">
+            <div class="u-qrcode">
+              <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
+              <i class="i-row"></i>
+            </div>
+          </span>
+          <span class="f-has-qr">
+            <img src="../assets/imgs/icon_QQ.png" class="i-qq">
+            <div class="u-qrcode">
+              <img src="https://id.163.com/gj/pub/res/images/qrcode.png" alt="">
+              <i class="i-row"></i>
+            </div>
+          </span>
+        </div>
       </div>
+    </div>
+    <div class="g-ub">
       <UserBoard class="u-userboard"
+                 v-if="!userName"
                  :user-name="userName"
                  @loginOff="loginOff"
                  @loginIn="loginIn"></UserBoard>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -56,11 +62,13 @@ export default {
     z-index: 100;
     height: 1.8rem;
     background-color: #fff;
+    box-shadow: 0rem 0rem 0.2rem 0rem rgba(199, 199, 199, 1);
   }
   .container{
     position: relative;
-    width: 30rem;
+    width: 33rem;
     height: 100%;
+    background-color: #fff;
     margin: 0 auto;
   }
   .logo{
@@ -133,10 +141,15 @@ export default {
       }
     }
   }
-
+  .g-ub{
+    width: 33rem;
+    margin: 0 auto;
+  }
   /* 用户板 */
   .u-userboard{
     position: absolute;
     top: 1.8rem;
+    z-index: 11;
+    box-shadow: 0rem 0rem 0.2rem 0rem rgba(199, 199, 199, 1);
   }
 </style>
