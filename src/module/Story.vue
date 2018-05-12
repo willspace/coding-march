@@ -11,6 +11,9 @@
           <div :class="['u-flag',{'pass':currLesson>index+1}]">{{index+1}}</div>
         </div>
       </a>
+      <div class="u-back">
+        <div class="u-btn" @click="back"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,6 +71,9 @@ export default {
           this.backMap = res.backMap;
           setTimeout(()=>this.loaderCancel(),500)
         })
+    },
+    back(){
+      this.$emit('pageGo',-1);
     }
   }
 }
@@ -149,6 +155,35 @@ export default {
         overflow:hidden;
         background: url(../assets/imgs/button_class_finished_left_default.png) no-repeat;
         background-size: cover;
+      }
+    }
+  }
+  .u-back{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3.34rem;
+    width: 3.8rem;
+    background-image: url(../assets/imgs/page_side.png);
+    background-size: contain;
+
+    .u-btn{
+      position: absolute;
+      bottom: 0.4rem;
+      right: 0.4rem;
+      height: 1.2rem;
+      width: 1.2rem;
+      background-image: url(../assets/imgs/back.png);
+      background-size: cover;
+      border-radius: 1.2rem;
+      cursor: pointer;
+
+      &:hover{
+        box-shadow: 0 0 20px #ffcc29;
+      }
+
+      &:active{
+        box-shadow: 0 0 20px #d29d18;
       }
     }
   }

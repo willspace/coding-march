@@ -236,27 +236,29 @@ export default {
       position: absolute;
       height: 1.8rem;
       width: 1.8rem;
-      background: #ccc;
       border-radius: 100%;
       cursor: pointer;
       pointer-events: auto;
       background-size: cover;
       background-repeat: no-repeat;
 
-      &:hover{
-        box-shadow: 0 0 20px #ffcc29;
-      }
       &:active{
         box-shadow: 0 0 20px #dabb24;
       }
 
       &.left{
         left: 50px;
-        background-image: url(../assets/imgs/button_left.png);
+        background-image: url(../assets/imgs/button_left0.png);
+        &:hover{
+          background-image: url(../assets/imgs/button_left.png);
+        }
       }
       &.right{
         right: 50px;
-        background-image: url(../assets/imgs/button_right.png);
+        background-image: url(../assets/imgs/button_right0.png);
+        &:hover{
+          background-image: url(../assets/imgs/button_right.png);
+        }
       }
       &.goin{
         top: 8rem;
@@ -265,6 +267,10 @@ export default {
         right: 250px;
         border-radius: 1.5rem;
         background-image: url(../assets/imgs/button_enter_default.png);
+
+        &:hover{
+          box-shadow: 0 0 20px #ffcc29;
+        }
       }
     }
   }
