@@ -2,6 +2,7 @@
   <div class="g-wrapper"
        :class="['f-changePage',changeAnim]">
     <router-view @changePage="changePage"
+                 @pageGo="pageGo"
                  @loaderCancel="loaderCancel"/>
     <div :class="['g-loading',changeAnim]" v-if="loading">
       <div class="loader-inner">
@@ -24,8 +25,20 @@ export default {
       this.loading = true;
       setTimeout(()=>{
         this.$router.push(conf);
+        this.changeAnimPre = this.changeAnim;
         this.changeAnim = '';
       },1000);
+    },
+    pageGo(size){
+      switch (this.changeAnimPre){
+        case 'up':
+          this.changeAnim = 'down';
+      }
+      this.loading = true;
+      setTimeout(()=>{
+        this.$router.go(size);
+        this.changeAnim = '';
+      },this.changeAnim?1000:0);
     },
     loaderCancel(){
       setTimeout(()=>this.loading = false,500);
@@ -60,6 +73,9 @@ export default {
     &.up{
       transform: translateY(100%);
     }
+    &.down{
+      transform: translateY(-100%);
+    }
     .loader-inner {
       bottom: 0;
       left: 0;
@@ -79,6 +95,12 @@ export default {
     }
     @keyframes upKF {
       100%{transform: translateY(-100%)}
+    }
+    &.down{
+      animation:downKF 1s ease forwards;
+    }
+    @keyframes downKF {
+      100%{transform: translateY(100%)}
     }
   }
 </style>
