@@ -98,9 +98,9 @@ export default {
     }
     .f-has-qr{
       display: inline-block;
-      vertical-align: super;
+      vertical-align: top;
       position: relative;
-
+      margin-top: 0.15rem;
       .u-qrcode{
         position: absolute;
         display: none;

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <form class="u-login-box">
+    <div class="u-login-box">
       <template v-if="userName">
         <div class="user-box">
           欢迎你，<strong>{{userName}}</strong>
@@ -25,7 +25,7 @@
           <button class="i-btn" type="reset">重置</button>
         </template>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
