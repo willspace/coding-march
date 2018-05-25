@@ -85,7 +85,7 @@ export default {
       top: 0;
       height: 5.5rem;
       width: 5.5rem;
-      background-image: url(./assets/imgs/loading.gif);
+      background-image: url(assets/imgs/loading.gif);
       background-size: contain;
     }
   }
