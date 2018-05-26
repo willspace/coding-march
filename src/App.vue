@@ -58,6 +58,26 @@ export default {
     font-size: 42px;
     height: 100%;
   }
+  @media screen and (max-width: 1366px) {
+    html {
+      font-size: 32px;
+    }
+  }
+  @media screen and (min-width: 1366px) {
+    html {
+      font-size: 36px;
+    }
+  }
+  @media screen and (min-width: 1680px) {
+    html {
+      font-size: 43px;
+    }
+  }
+  @media screen and (min-width: 1920px) {
+    html {
+      font-size: 50px;
+    }
+  }
   .g-wrapper{
     height: 100%;
   }
